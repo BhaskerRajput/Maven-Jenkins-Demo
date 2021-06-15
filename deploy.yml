@@ -1,0 +1,11 @@
+---
+- hosts: all
+  vars:
+  - warName: java-example.war
+  - tomcat_version: 8.5.66
+  - warRemotePath: /opt/apache-tomcat-{{ tomcat_version }}/webapps
+
+  tasks:
+  - name: Copy WAR to Remote server
+    copy: src=target/{{ warName }} dest={{ warRemotePath }}/{{ warName }} owner=tomcat group=tomcat
+   
